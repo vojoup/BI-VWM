@@ -1,0 +1,30 @@
+<li class="list-group-item"
+    style="margin: 0.5em; border: none;">
+  <div class="row">
+    <button
+      class="btn btn-block align-content-center"
+      title="{{!toggle ? 'Show full article' : 'Hide article'}}"
+      (click)="toggleArticle()"
+      [ngStyle]="{'background': '#' + color}">
+      <div class="row">
+        <div class="col-12">
+          <h3 class="align-content-center">
+            {{file.title}}
+          </h3>
+          <small class="badge">({{file.weight}})</small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <span class="dropdown-toggle"></span>
+        </div>
+      </div>
+    </button>
+  </div>
+  <app-article *ngIf="toggle && file.article;" [article]="file.article"></app-article>
+  <div *ngIf="toggle && !file.article" class="row text-center">
+    <div class="col-12">
+      Loading article...
+    </div>
+  </div>
+</li>

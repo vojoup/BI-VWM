@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-11 text-center">
+      <h1>Search</h1>
+      <div id="custom-search-input">
+        <div class="input-group col-md-12 input" style="padding-right: 0;">
+          <input #userQuery type="text"
+                 style="padding-right: 0em;"
+                 class="form-control input-lg"
+                 placeholder="Search..."
+                 autofocus
+                 (keyup.enter)="search(userQuery.value)"/>
+          <button type="submit"
+                  class="btn btn-default"
+                  style="background: #3498db8f; color: black;"
+                  (click)="search(userQuery.value)">Go!
+          </button>
+          <button class="btn btn-default"
+                  style="background: #00c176; color: black; margin-left: 0.4em;"
+                  (click)="findSequentially(userQuery.value)">Find Sequentially
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-search-results [color]="color" [time]="time" [files]="files"
+                      *ngIf="searched && gotResults"></app-search-results>
+
+  <div class="row" *ngIf="searched && !loading && !gotResults"
+       style="margin-top: 20%; margin-left: 38%;">
+    <div class="row"><h2>No results...</h2></div>
+    <!--<div class="row"><h3>Sorry, I don't know anything about '{{userQuery.value}}'</h3></div>-->
+  </div>
+
+  <div *ngIf="loading" class="row col-6"
+       style="margin: 30% 30% 50%;">
+    <div class="align-items-center">
+      <app-spinner></app-spinner>
+    </div>
+  </div>
+
+</div>

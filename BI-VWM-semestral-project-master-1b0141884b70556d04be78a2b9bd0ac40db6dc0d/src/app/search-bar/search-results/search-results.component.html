@@ -1,0 +1,13 @@
+<div class="container" *ngIf="files.length > 0"
+     style="margin: 1em;">
+  <div class="row" *ngIf="files.length !== 0">
+    <div class="col-md-12">
+      <h2>I found {{files.length}} {{files.length > 1 ? 'records' : 'record'}} in {{time}} ms: </h2>
+    </div>
+  </div>
+  <div class="row">
+    <ol class="col-10 list-group align-content-center">
+      <app-search-result *ngFor="let f of files" [file]="f" [color]="color"></app-search-result>
+    </ol>
+  </div>
+</div>
